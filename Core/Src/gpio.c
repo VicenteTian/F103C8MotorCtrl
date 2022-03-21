@@ -49,8 +49,8 @@ void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, DIR_Pin|EN_Pin, GPIO_PIN_RESET);
-  HAL_GPIO_WritePin(GPIOB, LED_Red_Pin|LED_Green_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPIOB, DIR_Pin|EN_Pin|LED_Red_Pin|LED_Green_Pin, GPIO_PIN_RESET);
+
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(RS485_DE_RE_GPIO_Port, RS485_DE_RE_Pin, GPIO_PIN_RESET);
 

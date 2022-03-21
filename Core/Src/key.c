@@ -9,19 +9,19 @@ static KEY_T s_tBtn[KEY_COUNT];
 static KEY_FIFO_T s_tKey;		/* 按键FIFO变量,结构体 */
 static void bsp_DetectKey(uint8_t i);
 #define GPIO_PORT_K1    GPIOA
-#define GPIO_PIN_K1	    GPIO_PIN_4
+#define GPIO_PIN_K1	    GPIO_PIN_4//L
 
 #define GPIO_PORT_K2    GPIOA
-#define GPIO_PIN_K2	    GPIO_PIN_5
+#define GPIO_PIN_K2	    GPIO_PIN_5//C
 
 #define GPIO_PORT_K3    GPIOA
-#define GPIO_PIN_K3	    GPIO_PIN_6
+#define GPIO_PIN_K3	    GPIO_PIN_6//D
 
 #define GPIO_PORT_K4    GPIOA
-#define GPIO_PIN_K4	    GPIO_PIN_7
+#define GPIO_PIN_K4	    GPIO_PIN_7//U
 
 #define GPIO_PORT_K5    GPIOB
-#define GPIO_PIN_K5	    GPIO_PIN_0
+#define GPIO_PIN_K5	    GPIO_PIN_0//R
 
 /* #define GPIO_PORT_K6    GPIOF
 #define GPIO_PIN_K6	    GPIO_PIN_11

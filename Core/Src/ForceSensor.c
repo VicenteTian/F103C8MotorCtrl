@@ -6,6 +6,7 @@
  */
 #include "ForceSensor.h"
 #include "StepMotor.h"
+__IO extern uint8_t Force_Angle;
 void getSensor(void)
 {
     uint8_t sensorCmd[8] = {0x01U, 0x03U, 0U, 0U, 0U, 0x1U, 0x84U, 0x0aU};
@@ -18,9 +19,9 @@ int16_t vParseSensor(uint8_t is_send)
     var[0] <<= 8;
     var[0] |= rx_buffer2[4]; //单位0.1N，实际的力为force*0.1N=force*10g/1kg*10N/kg
     var[1] = GetSetForce();
-    if (is_send)
+    if (is_send&&(Force_Angle==0))
     {
-      //vcan_sendware((uint8_t *)var, sizeof(var));
+      vcan_sendware((uint8_t *)var, sizeof(var));
     }
     return var[0];
 }

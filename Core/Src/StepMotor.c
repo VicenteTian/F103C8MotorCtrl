@@ -7,9 +7,11 @@
 #include "StepMotor.h"
 #include "tim.h"
 #include "key.h"
+#include "oled.h"
 
 __IO uint16_t Toggle_Pulse = 500;
 __IO uint8_t IsPIDEnable = 0;
+__IO uint8_t Force_Angle = 0;//发送角度信息还是力信息选择 0：F    1：A
 typedef struct
 {
   __IO float MotorSpeed;    // 控制电机的脉冲频率
@@ -89,10 +91,11 @@ void StempMotorStateCtrol(void)
   {
     switch (ucKeyCode)
     {
-    case KEY_2_DOWN://Center
+    case KEY_3_DOWN://Down
 			HAL_GPIO_TogglePin(GPIOB,LED_Green_Pin);
       if (ena == 1)
       {
+				OLED_ShowString(100,2, "Ena", 16);
         MotorEnable(); // 正常运行
         //TIM_CCxChannelCmd(TIM1, TIM_CHANNEL_1, TIM_CCx_ENABLE);
         ena = 0;
@@ -100,6 +103,7 @@ void StempMotorStateCtrol(void)
       else
       {
         MotorDisable(); // 停机
+				OLED_ShowString(100,2, "Dis", 16);
         //TIM_CCxChannelCmd(TIM1, TIM_CHANNEL_1, TIM_CCx_DISABLE);
         ena = 1;
       }
@@ -109,10 +113,12 @@ void StempMotorStateCtrol(void)
       if (dir == 0)
       {
         dir = 1;
+				OLED_ShowString(100,4, "Up", 16);
       }
       else
       {
         dir = 0;
+				OLED_ShowString(100,4, "Dn", 16);
       }
       STEPMOTOR_Motion_Ctrl(dir, 200);
       break;
@@ -120,12 +126,17 @@ void StempMotorStateCtrol(void)
 			HAL_GPIO_TogglePin(GPIOB,LED_Green_Pin);
       if (IsPIDEnable == 0)
       {
+				OLED_ShowString(100,0, "Ena", 16);
         IsPIDEnable = 1;
       }
       else
       {
         IsPIDEnable = 0;
+				OLED_ShowString(100,0, "Dis", 16);
       }
+      break;
+			case KEY_5_DOWN://right	
+				Force_Angle=!Force_Angle;
       break;
     }
   }
@@ -142,12 +153,10 @@ void STEPMOTOR_Motion_Ctrl(uint8_t Dir, float Frequency)
 
   if (Dir == 1)
   {
-		HAL_GPIO_WritePin(GPIOB, LED_Red_Pin, GPIO_PIN_RESET);
     MotorUp();
   }
   else
   {
-		HAL_GPIO_WritePin(GPIOB, LED_Red_Pin, GPIO_PIN_SET);
     MotorDown();
   }
   if (Frequency > MAX_SPEED)

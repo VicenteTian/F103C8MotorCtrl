@@ -8,8 +8,6 @@
                 "e:\\files\\LR\\F103\\Drivers\\STM32F1xx_HAL_Driver\\Inc\\Legacy",
                 "e:\\files\\LR\\F103\\Drivers\\CMSIS\\Device\\ST\\STM32F1xx\\Include",
                 "e:\\files\\LR\\F103\\Drivers\\CMSIS\\Include",
-                "C:\\SoftWare\\MDK5\\ARM\\ARMCC\\include",
-                "C:\\SoftWare\\MDK5\\ARM\\ARMCC\\include\\rw",
                 "e:\\files\\LR\\F103\\MDK-ARM",
                 "e:\\files\\LR\\F103\\Core\\Src",
                 "e:\\files\\LR\\F103\\Drivers\\STM32F1xx_HAL_Driver\\Src"

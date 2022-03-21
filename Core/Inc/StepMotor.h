@@ -13,7 +13,7 @@
 #define MAX_SPEED 1000
 #define MIN_SPEED 1
 #define abs(x) ((x) < 0 ? (-x) : (x))
-#define SAMPLING_PERIOD 25 // 力传感器采样周期 单位ms
+#define SAMPLING_PERIOD 20 // 力传感器采样周期 单位ms
 #define FREQ_UINT 6000     // SystemCoreClock/((Prescaler+1)*2*50)
 
 #define MotorUp() HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET)

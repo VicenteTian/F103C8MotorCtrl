@@ -124,6 +124,7 @@ int main(void)
     if (Time_Flag & SAMPLING)
     {
       getSensor();
+			Read_Motor_angle();
       Time_Flag &= ~SAMPLING;
     }
     if (recv_end_flag2) //收到力传感器的数据

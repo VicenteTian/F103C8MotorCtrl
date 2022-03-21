@@ -21,10 +21,12 @@
 #define Motor2 0x02 // HT4315电机2的地址
 
 #define MotorPosCtrl 0x55 // 电机绝对值位置闭环控制命令
+#define MotorPosRead 0x2f // 电机绝对值位置读取命令
 
 uint16_t CRC16_MODBUS(uint8_t *Buff, uint8_t len);
 HAL_StatusTypeDef RS485Trans(uint8_t sequence, uint8_t slaver_addr, uint8_t cmd, uint8_t data_len, uint8_t *data);
 void set_Motor_angle(uint8_t slaver_addr, int16_t angle);
 void vParseString(uint8_t *buff);
 void restartRev1(void);
+void Read_Motor_angle(void);
 #endif

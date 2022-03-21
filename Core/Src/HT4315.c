@@ -8,7 +8,8 @@
 #include "StepMotor.h"
 uint8_t RS485TxBuff[20] = {0};
 uint8_t RS485RxBuff[20] = {0};
-
+    int16_t Motor1Angle = 0;
+    int16_t Motor2Angle = 0;
 const uint16_t crctalbeabs[] = {
     0x0000, 0xCC01, 0xD801, 0x1400, 0xF001, 0x3C00, 0x2800, 0xE401,
     0xA001, 0x6C00, 0x7800, 0xB401, 0x5000, 0x9C01, 0x8801, 0x4400};
@@ -51,15 +52,38 @@ void set_Motor_angle(uint8_t slaver_addr, int16_t angle)
     data[2] = (uint8_t)(count >> 16);
     data[3] = (uint8_t)(count >> 24);
     RS485Trans(0, slaver_addr, MotorPosCtrl, 4, data);
+    //RS458RE;
+}
+void Read_Motor_angle(void)
+{
+	  uint8_t angleRev[15]={0};
+	  double  var[4] = {0};
+	   uint16_t tmp=0;
+    RS485Trans(0, 1, MotorPosRead, 0, NULL);
     RS458RE;
+		HAL_UART_Receive(&huart1,angleRev,15,200);
+    tmp |= angleRev[6];
+		tmp<<=8;
+		tmp|=angleRev[5];
+		var[0]=(double)tmp*360/16384;
+		var[1]=Motor1Angle;
+		HAL_Delay(1);
+	  RS485Trans(0, 2, MotorPosRead, 0, NULL);
+    RS458RE;
+		HAL_UART_Receive(&huart1,angleRev,15,200);
+	  tmp=0;
+    tmp|= angleRev[6];
+		tmp<<=8;
+		tmp|=angleRev[5];
+	  var[2]=(double)tmp*360/16384;
+		var[3]=Motor2Angle;
+    vcan_sendware((uint8_t *)var, sizeof(var));
 }
 void vParseString(uint8_t *buff)
 {
     char *pBuffMotor1;
     char *pBuffMotor2;
     char *pBuffForce;
-    int16_t Motor1Angle = 0;
-    int16_t Motor2Angle = 0;
     int16_t setForce = 0;
     //获取电机字符串指针
     pBuffMotor1 = strstr((const char *)buff, ":");

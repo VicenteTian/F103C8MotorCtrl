@@ -1,7 +1,7 @@
 Dependencies for Project 'F103', Target 'F103': (DO NOT MODIFY !)
 CompilerVersion: 5060960::V5.06 update 7 (build 960)::.\ARMCC
 F (startup_stm32f103xb.s)(0x61DAE6D3)(--cpu Cortex-M3 -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_F103-IC:\SoftWare\MDK5\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\SoftWare\MDK5\Keil\STM32F1xx_DFP\2.3.0\Device\Include--pd "__UVISION_VERSION SETA 533" --pd "_RTE_ SETA 1" --pd "STM32F10X_MD SETA 1" --pd "_RTE_ SETA 1"--list startup_stm32f103xb.lst --xref -o f103\startup_stm32f103xb.o --depend f103\startup_stm32f103xb.d)
-F (..\Core\Src\ForceSensor.c)(0x61DBDC67)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_F103-IC:\SoftWare\MDK5\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\SoftWare\MDK5\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="533" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o f103\forcesensor.o --omf_browse f103\forcesensor.crf --depend f103\forcesensor.d)
+F (..\Core\Src\ForceSensor.c)(0x621A0F47)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_F103-IC:\SoftWare\MDK5\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\SoftWare\MDK5\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="533" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o f103\forcesensor.o --omf_browse f103\forcesensor.crf --depend f103\forcesensor.d)
 I (../Core/Inc/ForceSensor.h)(0x619C49FC)
 I (../Core/Inc/usart.h)(0x61DAE6CD)
 I (../Core/Inc/main.h)(0x61DAE6CF)
@@ -36,9 +36,9 @@ I (../Core/Inc/UART.h)(0x61DAE4CB)
 I (C:\SoftWare\MDK5\ARM\ARMCC\include\stdio.h)(0x5E8E2EB2)
 I (C:\SoftWare\MDK5\ARM\ARMCC\include\string.h)(0x5E8E2EB2)
 I (C:\SoftWare\MDK5\ARM\ARMCC\include\stdlib.h)(0x5E8E2EB2)
-I (../Core/Inc/StepMotor.h)(0x61DBE024)
-F (..\Core\Src\HT4315.c)(0x61DAE77E)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_F103-IC:\SoftWare\MDK5\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\SoftWare\MDK5\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="533" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o f103\ht4315.o --omf_browse f103\ht4315.crf --depend f103\ht4315.d)
-I (../Core/Inc/HT4315.h)(0x61DAE585)
+I (../Core/Inc/StepMotor.h)(0x62189760)
+F (..\Core\Src\HT4315.c)(0x621A16EE)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_F103-IC:\SoftWare\MDK5\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\SoftWare\MDK5\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="533" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o f103\ht4315.o --omf_browse f103\ht4315.crf --depend f103\ht4315.d)
+I (../Core/Inc/HT4315.h)(0x6219E11C)
 I (../Core/Inc/gpio.h)(0x61DAE6CC)
 I (../Core/Inc/main.h)(0x61DAE6CF)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x6119E2B3)
@@ -73,7 +73,7 @@ I (../Core/Inc/UART.h)(0x61DAE4CB)
 I (C:\SoftWare\MDK5\ARM\ARMCC\include\stdio.h)(0x5E8E2EB2)
 I (C:\SoftWare\MDK5\ARM\ARMCC\include\string.h)(0x5E8E2EB2)
 I (C:\SoftWare\MDK5\ARM\ARMCC\include\stdlib.h)(0x5E8E2EB2)
-I (../Core/Inc/StepMotor.h)(0x61DBE024)
+I (../Core/Inc/StepMotor.h)(0x62189760)
 F (..\Core\Src\key.c)(0x61DAE8B0)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_F103-IC:\SoftWare\MDK5\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\SoftWare\MDK5\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="533" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o f103\key.o --omf_browse f103\key.crf --depend f103\key.d)
 I (../Core/Inc/key.h)(0x6195EE01)
 I (C:\SoftWare\MDK5\ARM\ARMCC\include\stdint.h)(0x5E8E2EB2)
@@ -105,8 +105,8 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x6119E2B3)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x6119E2B3)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x6119E2B3)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x6119E2B3)
-F (..\Core\Src\StepMotor.c)(0x61DBE0C6)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_F103-IC:\SoftWare\MDK5\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\SoftWare\MDK5\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="533" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o f103\stepmotor.o --omf_browse f103\stepmotor.crf --depend f103\stepmotor.d)
-I (../Core/Inc/StepMotor.h)(0x61DBE024)
+F (..\Core\Src\StepMotor.c)(0x621A0B2F)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_F103-IC:\SoftWare\MDK5\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\SoftWare\MDK5\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="533" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o f103\stepmotor.o --omf_browse f103\stepmotor.crf --depend f103\stepmotor.d)
+I (../Core/Inc/StepMotor.h)(0x62189760)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x6119E2B3)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x61DAE6CF)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x6119E2B3)
@@ -177,7 +177,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x6119E2B3)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x6119E2B3)
 I (C:\SoftWare\MDK5\ARM\ARMCC\include\string.h)(0x5E8E2EB2)
 I (C:\SoftWare\MDK5\ARM\ARMCC\include\stdlib.h)(0x5E8E2EB2)
-F (../Core/Src/main.c)(0x61DAEEE2)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_F103-IC:\SoftWare\MDK5\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\SoftWare\MDK5\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="533" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o f103\main.o --omf_browse f103\main.crf --depend f103\main.d)
+F (../Core/Src/main.c)(0x621A0F47)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_F103-IC:\SoftWare\MDK5\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\SoftWare\MDK5\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="533" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o f103\main.o --omf_browse f103\main.crf --depend f103\main.d)
 I (../Core/Inc/main.h)(0x61DAE6CF)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x6119E2B3)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x61DAE6CF)
@@ -210,12 +210,12 @@ I (../Core/Inc/dma.h)(0x61DAE6CC)
 I (../Core/Inc/tim.h)(0x61DAE6CD)
 I (../Core/Inc/usart.h)(0x61DAE6CD)
 I (../Core/Inc/gpio.h)(0x61DAE6CC)
-I (../Core/Inc/HT4315.h)(0x61DAE585)
+I (../Core/Inc/HT4315.h)(0x6219E11C)
 I (../Core/Inc/UART.h)(0x61DAE4CB)
 I (C:\SoftWare\MDK5\ARM\ARMCC\include\stdio.h)(0x5E8E2EB2)
 I (C:\SoftWare\MDK5\ARM\ARMCC\include\string.h)(0x5E8E2EB2)
 I (C:\SoftWare\MDK5\ARM\ARMCC\include\stdlib.h)(0x5E8E2EB2)
-I (../Core/Inc/StepMotor.h)(0x61DBE024)
+I (../Core/Inc/StepMotor.h)(0x62189760)
 I (../Core/Inc/ForceSensor.h)(0x619C49FC)
 I (../Core/Inc/key.h)(0x6195EE01)
 F (../Core/Src/gpio.c)(0x61DBE024)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_F103-IC:\SoftWare\MDK5\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\SoftWare\MDK5\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="533" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o f103\gpio.o --omf_browse f103\gpio.crf --depend f103\gpio.d)

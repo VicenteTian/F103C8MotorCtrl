@@ -17,7 +17,8 @@ typedef struct
   __IO int16_t ActualPoint; // 实际值  单位:0.1N
   __IO int16_t Err;         // 偏差值  单位:0.1N  E[k]项
   __IO int16_t LastError;   // 前一次误差     E[k-1]项
-  __IO int16_t PrevError;   // 前两次误差     E[k-2]项
+	__IO float integral;//积分值
+  //__IO int16_t PrevError;   // 前两次误差     E[k-2]项
   __IO float Kp, Ki, Kd;
 } PID;
 __IO static PID sPID;
@@ -28,10 +29,11 @@ void PID_init(void)
   sPID.ActualPoint = 0;
   sPID.Err = 0;
   sPID.LastError = 0;
-  sPID.PrevError = 0;
-  sPID.Kp = 4.5;
-  sPID.Ki = 0.0;
-  sPID.Kd = 5.5;
+	sPID.integral=0.0;
+  //sPID.PrevError = 0;
+  sPID.Kp = 8;
+  sPID.Ki = 0.003;
+  sPID.Kd = 5;
 }
 int16_t GetSetForce(void)
 {
@@ -46,15 +48,22 @@ void StempMotorPIDCtrol(int16_t RealForce)
   uint8_t dir = 0;
   float Exp_Val = 0;
   /*********增量式PID************************/
-  float iIncpid = 0;
+  static uint8_t index = 0;
   sPID.ActualPoint = RealForce;
   sPID.Err = sPID.SetPoint - sPID.ActualPoint;    //当前误差
-  iIncpid = sPID.Kp * (sPID.Err - sPID.LastError) //
-            + sPID.Ki * sPID.Err                  //
-            + sPID.Kd * (sPID.Err - 2 * sPID.LastError + sPID.PrevError);
-  sPID.MotorSpeed += iIncpid;
-  sPID.PrevError = sPID.LastError; // 存储误差，用于下次计算
-  sPID.LastError = sPID.Err;
+	if(abs(sPID.Err)>150)
+	{
+		index=0;
+	}
+	else
+	{
+		index=1;
+		sPID.integral+=sPID.Err;
+	}
+  sPID.MotorSpeed = sPID.Kp * sPID.Err
+            + index *sPID.Ki * sPID.integral                //
+            + sPID.Kd * (sPID.Err -  sPID.LastError);
+  sPID.LastError = sPID.Err;// 存储误差，用于下次计算
   /************************************/
   if (sPID.MotorSpeed >= 0)
   {

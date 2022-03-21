@@ -20,7 +20,7 @@ int16_t vParseSensor(uint8_t is_send)
     var[1] = GetSetForce();
     if (is_send)
     {
-      vcan_sendware((uint8_t *)var, sizeof(var));
+      //vcan_sendware((uint8_t *)var, sizeof(var));
     }
     return var[0];
 }

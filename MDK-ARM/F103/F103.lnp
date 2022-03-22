@@ -30,7 +30,7 @@
 "f103\stm32f1xx_hal_tim_ex.o"
 "f103\stm32f1xx_hal_uart.o"
 "f103\system_stm32f1xx.o"
---strict --scatter "F103\F103.sct"
+--library_type=microlib --strict --scatter "F103\F103.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list "F103.map" -o F103\F103.axf

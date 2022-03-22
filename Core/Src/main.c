@@ -97,9 +97,9 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_TIM1_Init();
+	MX_DMA_Init();
   MX_USART1_UART_Init();
   MX_USART2_UART_Init();
-  MX_DMA_Init();
   MX_USART3_UART_Init();
   MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
@@ -127,6 +127,7 @@ int main(void)
     StempMotorStateCtrol();
     if (recv_end_flag) //收到来自USB转串口的命令数据
     {
+			printf("ok\n");
       vParseString(rx_buffer);
       restartRev1();
     }

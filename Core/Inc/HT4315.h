@@ -28,5 +28,5 @@ HAL_StatusTypeDef RS485Trans(uint8_t sequence, uint8_t slaver_addr, uint8_t cmd,
 void set_Motor_angle(uint8_t slaver_addr, int16_t angle);
 void vParseString(uint8_t *buff);
 void restartRev1(void);
-void Read_Motor_angle(void);
+void Read_Motor_angle(int16_t *var);
 #endif

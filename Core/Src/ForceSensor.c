@@ -6,24 +6,28 @@
  */
 #include "ForceSensor.h"
 #include "StepMotor.h"
+#include "HT4315.h"
 __IO extern uint8_t Force_Angle;
+__IO int16_t realForce=0;
 void getSensor(void)
 {
     uint8_t sensorCmd[8] = {0x01U, 0x03U, 0U, 0U, 0U, 0x1U, 0x84U, 0x0aU};
     HAL_UART_Transmit(&huart3, (uint8_t *)sensorCmd, 8, 50);
 }
-int16_t vParseSensor(uint8_t is_send)
+
+int16_t vParseSensor(void)
 {
-    int16_t var[2] = {0};
-    var[0] |= rx_buffer2[3];
-    var[0] <<= 8;
-    var[0] |= rx_buffer2[4]; //单位0.1N，实际的力为force*0.1N=force*10g/1kg*10N/kg
-    var[1] = GetSetForce();
-    if (is_send&&(Force_Angle==0))
-    {
-      vcan_sendware((uint8_t *)var, sizeof(var));
-    }
-    return var[0];
+    int16_t tmp=0;
+    tmp |= rx_buffer2[3];
+    tmp <<= 8;
+    tmp |= rx_buffer2[4]; //单位0.1N，实际的力为force*0.1N=force*10g/1kg*10N/kg
+	  realForce=tmp;
+	return realForce;
+    
+}
+int16_t getRealForce(void)
+{
+	return realForce;
 }
 void restartRev2(void)
 {

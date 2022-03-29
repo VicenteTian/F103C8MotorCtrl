@@ -8,8 +8,8 @@
 #include "StepMotor.h"
 uint8_t RS485TxBuff[20] = {0};
 uint8_t RS485RxBuff[20] = {0};
-    int16_t Motor1Angle = 0;
-    int16_t Motor2Angle = 0;
+int16_t Motor1Angle = 0;
+int16_t Motor2Angle = 0;
 const uint16_t crctalbeabs[] = {
     0x0000, 0xCC01, 0xD801, 0x1400, 0xF001, 0x3C00, 0x2800, 0xE401,
     0xA001, 0x6C00, 0x7800, 0xB401, 0x5000, 0x9C01, 0x8801, 0x4400};
@@ -46,7 +46,8 @@ HAL_StatusTypeDef RS485Trans(uint8_t sequence, uint8_t slaver_addr, uint8_t cmd,
 void set_Motor_angle(uint8_t slaver_addr, int16_t angle)
 {
     uint8_t data[4] = {0};
-    int32_t count = angle * 16384 / 360;
+    int32_t count = angle;
+		//int32_t count = angle * 16384 / 360;
     data[0] = (uint8_t)count;
     data[1] = (uint8_t)(count >> 8);
     data[2] = (uint8_t)(count >> 16);
@@ -54,18 +55,20 @@ void set_Motor_angle(uint8_t slaver_addr, int16_t angle)
     RS485Trans(0, slaver_addr, MotorPosCtrl, 4, data);
     //RS458RE;
 }
-void Read_Motor_angle(void)
+void Read_Motor_angle(int16_t *var)
 {
 	  uint8_t angleRev[15]={0};
-	  double  var[4] = {0};
-	   uint16_t tmp=0;
+	  //double  var[4] = {0};
+		//int16_t  var[4] = {0};
+	  uint16_t tmp=0;
     RS485Trans(0, 1, MotorPosRead, 0, NULL);
     RS458RE;
 		HAL_UART_Receive(&huart1,angleRev,15,200);
     tmp |= angleRev[6];
 		tmp<<=8;
 		tmp|=angleRev[5];
-		var[0]=(double)tmp*360/16384;
+		//var[0]=(double)tmp*360/16384;
+		var[0]=tmp;
 		var[1]=Motor1Angle;
 		HAL_Delay(1);
 	  RS485Trans(0, 2, MotorPosRead, 0, NULL);
@@ -75,9 +78,10 @@ void Read_Motor_angle(void)
     tmp|= angleRev[6];
 		tmp<<=8;
 		tmp|=angleRev[5];
-	  var[2]=(double)tmp*360/16384;
+	  //var[2]=(double)tmp*360/16384;
+		var[2]=tmp;
 		var[3]=Motor2Angle;
-    vcan_sendware((uint8_t *)var, sizeof(var));
+    //vcan_sendware((uint8_t *)var, sizeof(var));
 }
 void vParseString(uint8_t *buff)
 {
@@ -108,11 +112,11 @@ void vParseString(uint8_t *buff)
         setForce = atoi(strtok(pBuffForce, ";"));
     }
     SetPIDForce(setForce);
-    if (Motor1Angle < 180 && Motor1Angle > 0)
+    if (Motor1Angle < 8192 && Motor1Angle > 0)
     {
         set_Motor_angle(Motor1, Motor1Angle);
     }
-    if (Motor2Angle < 180 && Motor2Angle > 0)
+    if (Motor2Angle < 8192 && Motor2Angle > 0)
     {
         HAL_Delay(5);
         set_Motor_angle(Motor2, Motor2Angle);

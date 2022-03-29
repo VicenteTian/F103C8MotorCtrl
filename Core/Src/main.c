@@ -36,7 +36,7 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-#define TXDCYCLE 50   // 数据发送周期;单位：ms
+#define TXDCYCLE 1000   // 数据发送周期;单位：ms
 #define SAMPLING 0x01 // 采样标记
 #define TXD 0x02      // 发送数据标记
 /* USER CODE END PTD */
@@ -113,7 +113,6 @@ int main(void)
 	OLED_ShowString(0, 0, "Up:   PID ", 16);
 	OLED_ShowString(0, 2, "Down: Motor ", 16);
 	OLED_ShowString(0, 4, "Left: Dir ", 16);
-	OLED_ShowString(0, 6, "Right:F/A ", 16);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -127,34 +126,29 @@ int main(void)
     StempMotorStateCtrol();
     if (recv_end_flag) //收到来自USB转串口的命令数据
     {
-			printf("ok\n");
       vParseString(rx_buffer);
       restartRev1();
     }
     // 采样和控制周期为20ms
     if (Time_Flag & SAMPLING)
     {
-      getSensor();
-			if(Force_Angle)
-			{
-			OLED_ShowString(100, 6, "A", 16);
-			Read_Motor_angle();
-			}
-			else
-			{
-				OLED_ShowString(100, 6, "F", 16);
-			}
+      getSensor();	
       Time_Flag &= ~SAMPLING;
     }
     if (recv_end_flag2) //收到力传感器的数据
     {
-      StempMotorPIDCtrol(vParseSensor(Time_Flag & TXD));
-      if (Time_Flag & TXD)
-      {
-        Time_Flag &= ~TXD;
-      }
+      StempMotorPIDCtrol(vParseSensor());
       restartRev2();
     }
+		if(Time_Flag & TXD)
+		{
+			int16_t var[6] = {0};
+			Read_Motor_angle(var);
+			var[4]=getRealForce();
+			var[5] = GetSetForce();
+      vcan_sendware((uint8_t *)var, sizeof(var));
+			Time_Flag &= ~TXD;
+		}
   }
   /* USER CODE END 3 */
 }
@@ -207,7 +201,7 @@ void HAL_SYSTICK_Callback(void)
   {
     Time_Flag |= SAMPLING;
   }
-  else if (time_count >= TXDCYCLE) // 1s发送一次数据
+  else if (time_count >= TXDCYCLE) // 40ms发送一次数据
   {
     Time_Flag |= TXD;
     time_count = 0;

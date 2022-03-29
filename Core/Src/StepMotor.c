@@ -27,15 +27,15 @@ __IO static PID sPID;
 void PID_init(void)
 {
   sPID.MotorSpeed = 0.0;
-  sPID.SetPoint = 400;
+  sPID.SetPoint = 300;
   sPID.ActualPoint = 0;
   sPID.Err = 0;
   sPID.LastError = 0;
 	sPID.integral=0.0;
   //sPID.PrevError = 0;
-  sPID.Kp = 8;
-  sPID.Ki = 0.003;
-  sPID.Kd = 5;
+  sPID.Kp = 7.8;
+  sPID.Ki = 0.0;
+  sPID.Kd = 4;
 }
 int16_t GetSetForce(void)
 {
